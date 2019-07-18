@@ -1,0 +1,36 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcf="http://www.datacron-project.eu/RDFGen_conf#"
+>
+
+	<!-- the absolute path to data source, this can be a folder to be recursively processed -->
+	<dcf:DataSource rdf:about="../../datasets/AIS_datasets/ais6K/synopses.shp">
+
+		<!-- Required: specifies the connector to be used -->
+		<dcf:connector>shapefile</dcf:connector>
+
+		<dcf:xPathEntity>the_geom</dcf:xPathEntity>
+
+		<dcf:exportOGC>?ogc</dcf:exportOGC>
+
+		<!-- Required: the template to be used -->
+		<dcf:template>configs/RDFGen/ais.q</dcf:template>
+
+		<!-- Required: the columns or geometry features or xPaths, or JSON fields (depending on the connector type) SELECTED from the source-->
+		<dcf:inputVariables>id,timestamp,longitude,latitude,annotation,speed,heading,turn,course,number_of_,avg_differ,last_diffe,min_differ,max_differ,max_speed,min_speed,avg_speed,variance_s,min_longit,max_longit,min_latitu,max_latitu,min_turn,max_turn,min_headin,max_headin</dcf:inputVariables>
+
+		<!-- Required: (for shapefiles) the geometry namespace to be used -->
+		<dcf:geomNamespace>http://www.datacron-project.eu/geometries/</dcf:geomNamespace>
+
+		<!-- Required: (for shapefiles) the folder where serialized geometries are stored -->
+		<dcf:geomFolder>geometries</dcf:geomFolder>
+
+		<!-- Required: the variables to be used for the source in the order specified (for shapefiles we use two additional variables, the geomID and mbr for the URI of the geometry and its WKT representation, or MBR for geometries other than points) -->
+		<dcf:TemplateVariables>?id,?timestamp,?longitude,?latitude,?annotation,?speed,?heading,?turn,?course,?number_of_points,?avg_difference_time,?last_difference_time,?min_difference_time,?max_difference_time,?max_speed,?min_speed,?avg_speed,?variance_speed,?min_longitude,?max_longitude,?min_latitude,?max_latitude,?min_turn,?max_turn,?min_heading,?max_heading,?geomID,?mbr</dcf:TemplateVariables>
+
+		<!--optional: if provided the generated triples will be provided at this path -->
+		<dcf:output>test/outputSHAPEFILE.ttl</dcf:output>
+
+	</dcf:DataSource>
+
+</rdf:RDF>

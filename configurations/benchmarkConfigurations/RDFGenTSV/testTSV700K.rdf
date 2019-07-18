@@ -1,0 +1,29 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcf="http://www.datacron-project.eu/RDFGen_conf#"
+>
+
+	<!-- the absolute path to data source, this can be a folder to be recursively processed -->
+	<dcf:DataSource rdf:about="../../datasets/tsv/persons700K.csv">
+
+		<!-- Required: specifies the connector to be used -->
+		<dcf:connector>csv</dcf:connector>
+
+		<!-- Required: the template to be used -->
+		<dcf:template>configs/RDFGen/persons.q</dcf:template>
+		
+		<!-- Required: the variables to be used for the source in the order specified -->
+		<dcf:delimiter>\t</dcf:delimiter>
+
+		<!-- Required: the columns or geometry features or xPaths, or JSON fields (depending on the connector type) SELECTED from the source-->
+		<dcf:inputVariables>0,1,2,3,4,5,6,7,8,9</dcf:inputVariables>
+
+		<!-- Required: the variables to be used for the source in the order specified -->
+		<dcf:TemplateVariables>?ID,?gender,?name,?surname,?address,?StreetNumber,?age,?occupation,?telephone,?carID</dcf:TemplateVariables>
+
+		<!--optional: if provided the generated triples will be provided at this path -->
+<!--		<dcf:output>test/output.ttl</dcf:output> -->
+
+	</dcf:DataSource>
+
+</rdf:RDF>

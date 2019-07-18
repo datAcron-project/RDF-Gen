@@ -1,0 +1,31 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcf="http://www.datacron-project.eu/RDFGen_conf#"
+>
+
+	<!-- the absolute path to data source, this can be a folder to be recursively processed -->
+	<dcf:DataSource rdf:about="../ais_brest_positions_raw.csv">
+
+		<!-- Required: specifies the connector to be used -->
+		<dcf:connector>csv</dcf:connector>
+
+		<!-- Required: the template to be used -->
+		<dcf:template>config/raw_positions.q</dcf:template>
+		
+		<!-- Required: the variables to be used for the source in the order specified -->
+		<dcf:delimiter>,</dcf:delimiter>
+
+<!--		<dcf:skip>1</dcf:skip> -->
+
+		<!-- Required: the columns or geometry features or xPaths, or JSON fields (depending on the connector type) SELECTED from the source-->
+		<dcf:inputVariables>0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26</dcf:inputVariables>
+
+		<!-- Required: the variables to be used for the source in the order specified -->
+		<dcf:TemplateVariables>?timestamp,?id,?longitude,?latitude,?speed,?heading,?v1,?turn,?course,?number_of_points,?avg_difference_time,?last_difference_time,?min_difference_time,?max_difference_time,?max_speed,?min_speed,?avg_speed,?variance_speed,?min_longitude,?max_longitude,?min_latitude,?max_latitude,?min_turn,?max_turn,?min_heading,?max_heading,?v2</dcf:TemplateVariables>
+
+		<!--optional: if provided the generated triples will be provided at this path -->
+		<dcf:output>ais_brest_positions_raw.ttl</dcf:output>
+
+	</dcf:DataSource>
+
+</rdf:RDF>

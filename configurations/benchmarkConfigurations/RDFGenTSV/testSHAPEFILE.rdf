@@ -1,0 +1,34 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:dcf="http://www.datacron-project.eu/RDFGen_conf#"
+>
+
+	<!-- the absolute path to data source, this can be a folder to be recursively processed -->
+	<dcf:DataSource rdf:about="/home/giorgos/workspace/RDF_Gen_Flink/test/shp/ne_10m_ports.shp">
+
+		<!-- Required: specifies the connector to be used -->
+		<dcf:connector>shapefile</dcf:connector>
+
+		<dcf:xPathEntity>the_geom</dcf:xPathEntity>
+
+		<!-- Required: the template to be used -->
+		<dcf:template>/home/giorgos/workspace/RDF_Gen_Flink/test/shapefile.q</dcf:template>
+
+		<!-- Required: the columns or geometry features or xPaths, or JSON fields (depending on the connector type) SELECTED from the source-->
+		<dcf:inputVariables>name,website</dcf:inputVariables>
+
+		<!-- Required: (for shapefiles) the geometry namespace to be used -->
+		<dcf:geomNamespace>http://www.datacron-project.eu/geometries/</dcf:geomNamespace>
+
+		<!-- Required: (for shapefiles) the folder where serialized geometries are stored -->
+		<dcf:geomFolder>geometries</dcf:geomFolder>
+
+		<!-- Required: the variables to be used for the source in the order specified (for shapefiles we use two additional variables, the geomID and mbr for the URI of the geometry and its WKT representation, or MBR for geometries other than points) -->
+		<dcf:TemplateVariables>?name,?website,?geomID,?mbr</dcf:TemplateVariables>
+
+		<!--optional: if provided the generated triples will be provided at this path -->
+		<dcf:output>/home/giorgos/workspace/RDF_Gen_Flink/test/outputSHAPEFILE.ttl</dcf:output>
+
+	</dcf:DataSource>
+
+</rdf:RDF>
